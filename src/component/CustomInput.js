@@ -1,16 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 
 
-class CustomInput extends Component {
-  constructor(props){
-      super(props);
-      this.state = {
-        text: ''
-    }
-  }
-
-    render() {
+function CustomInput(props) {
     return (
       <React.Fragment>
           <input 
@@ -19,12 +11,12 @@ class CustomInput extends Component {
              style={{padding: '5px', margin: '10px'}}
              placeholder="Start typing"
              
-             onChange={this.props.onChange}
+             onChange={props.onChange}
              />
          
       </React.Fragment>
     );
   }
-}
+
 
 export default CustomInput;
