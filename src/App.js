@@ -3,11 +3,14 @@ import logo from './logo.svg';
 import './App.css'
 import './component/ColorChanger'
 import ColorChanger from './component/ColorChanger';
+import CustomInput from './component/CustomInput';
 
 class App extends Component {
   constructor(props){
     super(props);
-      this.state ={colors:['000000']}
+      this.state ={colors:['000000'],
+      text: ''
+    }
   }
 
   componentDidMount(){
@@ -22,8 +25,7 @@ class App extends Component {
    
 }
 
-
-
+onChange = (e) => this.setState({text: e.target.value});
 
   render() {
     return (
@@ -39,6 +41,11 @@ class App extends Component {
           >
             Learn React
           </a>
+          <CustomInput onChange={this.onChange} />
+
+          <p>
+            {this.state.text}
+          </p>
         </header>
       </div>
     );
