@@ -4,11 +4,13 @@ import './App.css'
 import './component/ColorChanger'
 import ColorChanger from './component/ColorChanger';
 import CustomInput from './component/CustomInput';
+import CustomOutput from './component/CustomOutput';
+
 
 class App extends Component {
   constructor(props){
     super(props);
-      this.state ={colors:['000000'],
+      this.state ={colors:['#000000'],
       text: ''
     }
   }
@@ -19,7 +21,7 @@ class App extends Component {
     fetch('http://www.colr.org/json/color/random')
    ]).then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
    .then(([data1, data2]) => this.setState( prevState => ({
-     colors: [...prevState.colors, data1.colors[0].hex, data2.colors[0].hex]
+     colors: [...prevState.colors, '#' + data1.colors[0].hex, '#' + data2.colors[0].hex]
    })));
        
    
@@ -43,9 +45,7 @@ onChange = (e) => this.setState({text: e.target.value});
           </a>
           <CustomInput onChange={this.onChange} />
 
-          <p>
-            {this.state.text}
-          </p>
+          <CustomOutput text={this.state.text}/>
         </header>
       </div>
     );

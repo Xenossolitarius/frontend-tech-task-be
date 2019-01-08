@@ -12,25 +12,28 @@ class ColorChanger extends Component {
   changeColors = (e) => {
       
     if(this.isBlack === true){ 
-      this.setState({color: this.props.colors[Math.floor(Math.random()*2)+1]});
-      
+      this.setState({color: this.props.colors[retRandom()]});
+    
     }else{
       this.setState({color: this.props.colors[0]});
     }
     this.isBlack = !this.isBlack;
-    
 }
 
     render() {
     return (
       <React.Fragment>
-          <p onClick={this.changeColors} style={{color: '#' + this.state.color}}>
+          <p className = 'unselectable' onClick={this.changeColors} style={{color: this.state.color}}>
             Edit <code>src/App.js</code> and save to reload.
           </p>
          
       </React.Fragment>
     );
   }
+}
+
+function retRandom(){
+    return Math.floor(Math.random()*2)+1;
 }
 
 export default ColorChanger;
