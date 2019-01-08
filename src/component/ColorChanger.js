@@ -3,10 +3,28 @@ import React, { Component } from 'react';
 
 
 class ColorChanger extends Component {
-  render() {
+  constructor(props){
+      super(props);
+      this.state = {color: this.props.colors[0]};
+      this.isBlack = true;
+  }
+
+  changeColors = (e) => {
+      
+    if(this.isBlack === true){ 
+      this.setState({color: this.props.colors[Math.floor(Math.random()*2)+1]});
+      
+    }else{
+      this.setState({color: this.props.colors[0]});
+    }
+    this.isBlack = !this.isBlack;
+    
+}
+
+    render() {
     return (
       <React.Fragment>
-          <p>
+          <p onClick={this.changeColors} style={{color: '#' + this.state.color}}>
             Edit <code>src/App.js</code> and save to reload.
           </p>
          
